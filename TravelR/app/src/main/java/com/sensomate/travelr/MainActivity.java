@@ -250,19 +250,19 @@ public class MainActivity extends ActionBarActivity {
 
                         lati=point.latitude;
                         longi=point.longitude;
+                        if(haveNetworkConnection()) {
+                            Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
+                            List<android.location.Address> addresses;
+                            try {
+                                addresses = geocoder.getFromLocation(point.latitude, point.longitude, 1);
+                                cityName = addresses.get(0).getAddressLine(0);
+                                stateName = addresses.get(0).getAddressLine(1);
+                                countryName = addresses.get(0).getAddressLine(2);
 
-                        Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
-                        List<android.location.Address> addresses;
-                        try {
-                            addresses = geocoder.getFromLocation(point.latitude, point.longitude, 1);
-                            cityName = addresses.get(0).getAddressLine(0);
-                            stateName = addresses.get(0).getAddressLine(1);
-                            countryName = addresses.get(0).getAddressLine(2);
-
-                        } catch (Exception e1) {
-                            e1.printStackTrace();
+                            } catch (Exception e1) {
+                                e1.printStackTrace();
+                            }
                         }
-
                         AlertDialog.Builder alert=new AlertDialog.Builder(MainActivity.this);
                         alert.setTitle("Add note");
                         e = new EditText(MainActivity.this);
@@ -497,6 +497,7 @@ public class MainActivity extends ActionBarActivity {
                 try {
                     // Getting a maximum of 3 Address that matches the input text
                     addresses = geocoder.getFromLocationName(locationName[0], 3);
+                    Log.e("jk","jk");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -514,7 +515,7 @@ public class MainActivity extends ActionBarActivity {
             }
 
             // Clears all the existing markers on the map
-            googleMap.clear();
+         //   googleMap.clear();
 
             // Adding Markers on Google Map for each matching address
             for(int i=0;i<addresses.size();i++){

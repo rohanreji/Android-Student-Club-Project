@@ -43,9 +43,26 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/duration"
-        android:textColor="#7f8c8d"
-        android:textSize="10dip"
+        android:textColor="#fff"
+        android:textSize="15dip"
         android:layout_marginTop="1dip"
         android:text="" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="G+"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:background="#c0392b"
+        android:textColor="#fff"
+        android:id="@+id/button"
+        android:layout_below="@+id/description"
+        android:layout_alignParentRight="true"
+        android:onClick="share"
+         />
+
+    \
 
 </RelativeLayout>
